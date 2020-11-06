@@ -1,40 +1,43 @@
 
 /**
- * A tavunu is an imaginary Earth-dwelling being.
- *
- * A tavunu looks a bit like a Patagonian Mara and lives in a non-gendered but
- * hierarchical society. Most interactions among tavuni are negotiated with
- * pava -- items of status used for bargaining.
  * 
- * aaa
- *
  * @author Mithat Konar
  * @author Jacob Wesolowski 
+ * 
  */
-public class Tavunu {
+public class Beele extends Tavunu {
     /* See readme.md for what to do. */
     
     String tuvName;
     int pava;
     int yearOfBirth;
     
+    boolean isBeele;
     
     
-    Tavunu()
+    Beele()
     {
+        //super();
+        
         tuvName = null;
         pava = 0;
         yearOfBirth = 0;
+       
     }
     
-    Tavunu(String name, int yob, int amount)
+    Beele(String name, int yob, int amount)
     {
+        //super();
+        
         tuvName = name;
         yearOfBirth = yob;
         pava = amount;
 
     }
     
+    
+    
+    @Override
     public boolean setName(String name)
     {   
         if (name.startsWith("D") || name.startsWith("T"))
@@ -45,18 +48,25 @@ public class Tavunu {
         }
         else
         {
-            
+            tuvName = null;
             return false;
         }
     }
     
+    
+    
+    @Override
     public String getName()
     {
+        
         return tuvName;
         
         
     }
     
+
+    
+    @Override
     public boolean spendPava(int amount)
     {
         if (amount < 0)
@@ -70,6 +80,7 @@ public class Tavunu {
         } 
     }
     
+    @Override
     public boolean receivePava(int amount)
     {
         if (amount < 0)
@@ -84,24 +95,43 @@ public class Tavunu {
 
     }
     
+    @Override
     public int getPava()
-    {
+    {   
         return pava;
         
     }
     
+    @Override
     public int getBirthYear()
     {
         return yearOfBirth;
     }
     
+    @Override
     public void setBirthYear(int yob)
     {
         yearOfBirth = yob;
     }
     
+    @Override
     public String toString()
     {
-        return tuvName + " born in " + yearOfBirth + " has " + pava + " pava.";
+        if (pava < 80 && pava > 20)
+        {
+            isBeele = true;
+            
+        }
+        else
+        {
+            isBeele = false;
+        }
+        
+        if (isBeele == true)
+        {
+            return tuvName + " born in " + yearOfBirth + " is an Beele with " + pava + " pava.";
+        }
+        
+        return null;
     }
 }

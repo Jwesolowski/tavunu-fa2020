@@ -1,40 +1,43 @@
 
 /**
- * A tavunu is an imaginary Earth-dwelling being.
- *
- * A tavunu looks a bit like a Patagonian Mara and lives in a non-gendered but
- * hierarchical society. Most interactions among tavuni are negotiated with
- * pava -- items of status used for bargaining.
  * 
- * aaa
- *
  * @author Mithat Konar
  * @author Jacob Wesolowski 
+ * 
  */
-public class Tavunu {
+public class CrodeExalted extends Tavunu {
     /* See readme.md for what to do. */
     
     String tuvName;
     int pava;
     int yearOfBirth;
     
+    boolean isCrodeExalted;
     
     
-    Tavunu()
+    CrodeExalted()
     {
+        //super();
+        
         tuvName = null;
         pava = 0;
         yearOfBirth = 0;
+       
     }
     
-    Tavunu(String name, int yob, int amount)
+    CrodeExalted(String name, int yob, int amount)
     {
+        //super();
+        
         tuvName = name;
         yearOfBirth = yob;
         pava = amount;
 
     }
     
+    
+    
+    @Override
     public boolean setName(String name)
     {   
         if (name.startsWith("D") || name.startsWith("T"))
@@ -45,18 +48,25 @@ public class Tavunu {
         }
         else
         {
-            
+            tuvName = null;
             return false;
         }
     }
     
+    
+    
+    @Override
     public String getName()
     {
+        
         return tuvName;
         
         
     }
     
+
+    
+    @Override
     public boolean spendPava(int amount)
     {
         if (amount < 0)
@@ -70,6 +80,7 @@ public class Tavunu {
         } 
     }
     
+    @Override
     public boolean receivePava(int amount)
     {
         if (amount < 0)
@@ -84,24 +95,50 @@ public class Tavunu {
 
     }
     
+    @Override
     public int getPava()
-    {
+    {   
         return pava;
         
     }
     
+    @Override
     public int getBirthYear()
     {
         return yearOfBirth;
     }
     
+    @Override
     public void setBirthYear(int yob)
     {
         yearOfBirth = yob;
     }
     
+    @Override
     public String toString()
     {
-        return tuvName + " born in " + yearOfBirth + " has " + pava + " pava.";
+        if (pava > 80)
+        {
+            if(yearOfBirth % 2 == 0)
+            {
+                isCrodeExalted = true;
+                
+            }
+            else
+            {
+                isCrodeExalted = false;
+            }
+        }
+        else
+        {
+            isCrodeExalted = false;
+        }
+        
+        if (isCrodeExalted == true)
+        {
+            return tuvName + " born in " + yearOfBirth + " is an Exalted Crode with " + pava + " pava.";
+        }
+        
+        return null;
     }
 }
