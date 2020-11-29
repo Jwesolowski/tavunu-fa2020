@@ -35,6 +35,7 @@ public class Tavunu {
 
     }
     
+    
     public boolean setName(String name)
     {   
         if (name.startsWith("D") || name.startsWith("T"))
@@ -99,9 +100,19 @@ public class Tavunu {
     {
         yearOfBirth = yob;
     }
+ 
+    public void printOutput()
+    {
+        System.out.println(tuvName + " born in " + yearOfBirth + " has " + pava + " pava.");
+    }      
+    
     
     public String toString()
     {
-        return tuvName + " born in " + yearOfBirth + " has " + pava + " pava.";
+        return "a" + tuvName + " born in " + yearOfBirth + " has " + pava + " pava.";
     }
+    
+  
+    
 }
+
